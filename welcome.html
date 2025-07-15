@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Airwise AQI</title>
+</head>
+
+<body>
+
+    <div class="welcome-box">
+        <h1>Welcome to Airwise AQI</h1>
+        <p>Your reliable source for air quality information.</p>
+        <h3>About Airwise AQI</h3>
+        <p>Airwise AQI provides real-time data on air quality levels in your area.</p>
+        <p>Stay informed about the air you breathe and make healthier decisions.</p>
+        <div class="btn-container">
+            <a href="new.html" id="go-to-signup"><button class="explore-btn">Explore Now</button></a>
+        </div>
+    </div>
+    <div class="background"></div>
+    <img src="welcomeimg.jpg" class="background" alt="Oops..">
+
+    <!-- Sun and Cloud Animation -->
+    <div class="container">
+        <div class="cloud front">
+            <span class="left-front"></span>
+            <span class="right-front"></span>
+        </div>
+        <span class="sun sunshine"></span>
+        <span class="sun"></span>
+        <div class="cloud back">
+            <span class="left-back"></span>
+            <span class="right-back"></span>
+        </div>
+    </div>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        /* Apply the background image with blur */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+            filter: blur(5px) brightness(0.7);
+        }
+
+        /* Center the welcome box vertically and horizontally */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Styling for the welcome box with continuous color animation */
+        .welcome-box {
+            background: linear-gradient(135deg, #082bf4, #ff00b7, #f78f2a, #00a86b);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            width: 60%;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: animate-background 6s linear infinite; /* Continuous color animation */
+            position: relative;
+        }
+
+        @keyframes animate-background {
+            0% {
+                background: linear-gradient(135deg, #082bf4, #ff00b7, #f78f2a, #00a86b);
+            }
+            25% {
+                background: linear-gradient(135deg, #ff00b7, #f78f2a, #00a86b, #082bf4);
+            }
+            50% {
+                background: linear-gradient(135deg, #f78f2a, #00a86b, #082bf4, #ff00b7);
+            }
+            75% {
+                background: linear-gradient(135deg, #00a86b, #082bf4, #ff00b7, #f78f2a);
+            }
+            100% {
+                background: linear-gradient(135deg, #082bf4, #ff00b7, #f78f2a, #00a86b);
+            }
+        }
+
+        .welcome-box h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: hsl(0, 0%, 0%);
+            letter-spacing: 2px;
+        }
+
+        .welcome-box p {
+            font-size: 1.2em;
+            color: hsl(0, 0%, 0%);
+            margin-bottom: 15px;
+        }
+
+        .welcome-box h3 {
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        .explore-btn {
+            background: linear-gradient(135deg, hsl(0, 77%, 47%), hsl(0, 77%, 47%), 100%);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: hwb(0 0% 100%);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.5s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .explore-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sun and Cloud Animation */
+        .container {
+            position: absolute;
+            top: 20px; /* Adjust as needed for vertical spacing */
+            left: 20px; /* Adjust as needed for horizontal spacing */
+            width: 250px;
+            height: 250px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cloud {
+            width: 250px;
+        }
+
+        .front {
+            padding-top: 45px;
+            margin-left: 25px;
+            display: inline;
+            position: absolute;
+            z-index: 11;
+            animation: clouds 5s infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        .back {
+            margin-top: -30px;
+            margin-left: 150px;
+            z-index: 12;
+            animation: clouds 5s infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        .right-front {
+            width: 45px;
+            height: 45px;
+            border-radius: 50% 50% 50% 0%;
+            background-color: #4c9beb;
+            display: inline-block;
+            margin-left: -25px;
+            z-index: 5;
+        }
+
+        .left-front {
+            width: 65px;
+            height: 65px;
+            border-radius: 50% 50% 0% 50%;
+            background-color: #4c9beb;
+            display: inline-block;
+            z-index: 5;
+        }
+
+        .right-back {
+            width: 50px;
+            height: 50px;
+            border-radius: 50% 50% 50% 0%;
+            background-color: #4c9beb;
+            display: inline-block;
+            margin-left: -20px;
+            z-index: 5;
+        }
+
+        .left-back {
+            width: 30px;
+            height: 30px;
+            border-radius: 50% 50% 0% 50%;
+            background-color: #4c9beb;
+            display: inline-block;
+            z-index: 5;
+        }
+
+        .sun {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(to right, #fcbb04, #fffc00);
+            border-radius: 60px;
+            display: inline;
+            position: absolute;
+        }
+
+        .sunshine {
+            animation: sunshines 2s infinite;
+        }
+
+        @keyframes sunshines {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        @keyframes clouds {
+            0% {
+                transform: translateX(15px);
+            }
+            50% {
+                transform: translateX(0px);
+            }
+            100% {
+                transform: translateX(15px);
+            }
+        }
+    </style>
+</body>
+
+</html>

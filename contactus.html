@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        header {
+            background-color: #2d3e50; /* Dark background for contrast */
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds subtle shadow */
+        }
+
+        /* Logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: auto;
+}
+
+.logo-container img.logo {
+  width: 100px; /* Adjust size as needed */
+  height:40px;
+  margin-right: 100px;
+}
+.dropdown {
+            position: relative;
+            display: inline-block;
+            right: 30px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: hwb(209 54% 4%);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            right: 0;
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font: bolder;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropbtn {
+            background-color: rgb(39, 139, 74);
+            color: rgb(255, 255, 255);
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef6f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 90px auto; /* Added margin to prevent overlap with header */
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            text-align: center;
+            color: #2a9d8f;
+            margin-bottom: 20px;
+        }
+
+
+        .contacts {
+            margin-bottom: 30px;
+        }
+
+        .contacts h2 {
+            color: #264653;
+            border-bottom: 2px solid #e9c46a;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contacts ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .contacts li {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .contact-form {
+            margin-bottom: 30px;
+        }
+
+        .contact-form h2 {
+            color: #264653;
+            border-bottom: 2px solid #e9c46a;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button.btn {
+            background-color: #e9c46a;
+            color: #264653;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button.btn:hover {
+            background-color: #f4a261;
+        }
+
+        .social-icon {
+            color: #e76f51; /* The color for the Instagram icon */
+            font-size: 2.5em; /* Adjust the size of the icon */
+            margin-left: 10px; /* Space between text and icon */
+            transition: color 0.3s;
+            
+        }
+
+        .social-icon:hover {
+            color: #2a9d8f; /* Change color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="contactus.html">
+                    <img src="logo2.png" class="logo" alt="Airwise Logo">
+                </a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">MENU</button>
+            <div class="dropdown-content">
+                <a href="new.html">HOME</a>
+                <a href="aboutus.html">ABOUT US</a>
+                <a href="contactus.html">CONTACT US</a>
+                <a href="news.html">NEWS</a>
+                <a href="info.html">AQI INFO</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Contact Us at Airwise AQI</h1>
+    
+
+
+        <section class="contacts">
+            <h2>Our Team</h2>
+            <ul>
+                <li>Atharva Santosh Khadye</li>
+                <li>Ratan Dinesh Kalke</li>
+                <li>Hardik Suchit Khare</li>
+            </ul>
+            <h2>Connect with Us</h2>
+            <h3>
+                Follow us on Instagram:
+                <a href="https://www.instagram.com/ratan.15/" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </h3>
+        </section>
+
+        <section class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn">  <a href="contactus.html"> Send Message</a></button>
+              
+            </form>
+        </section>
+    </div>
+</body>
+<script>
+
+    
+        // Add functionality for "View Detailed Info" button
+        document.getElementById('submit').addEventListener('click', () => {
+            window.location.href = 'contactus.html'; // Replace with your actual detailed info page URL
+        });
+
+</script>
+
+<script>
+
+    // Dropdown functionality
+    document.addEventListener('DOMContentLoaded', function () {
+  const dropdownBtn = document.querySelector('.dropbtn');
+  const dropdownContent = document.querySelector('.dropdown-content');
+  
+  dropdownBtn.addEventListener('click', function () {
+  dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+  });
+  
+  // Close the dropdown if clicked outside of it
+  window.addEventListener('click', function (event) {
+  if (!event.target.matches('.dropbtn')) {
+      if (dropdownContent.style.display === 'block') {
+          dropdownContent.style.display = 'none';
+      }
+  }
+  });
+  });
+  </script>
+
+</html>

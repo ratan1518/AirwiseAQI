@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        header {
+            background-color: #2d3e50; /* Dark background for contrast */
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds subtle shadow */
+        }
+/* Logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: auto;
+}
+
+.logo-container img.logo {
+  width: 100px; /* Adjust size as needed */
+  height:40px;
+  margin-right: 100px;
+}
+
+.dropdown {
+            position: relative;
+            display: inline-block;
+            right: 30px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: hwb(209 54% 4%);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            right: 0;
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font: bolder;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropbtn {
+            background-color: rgb(39, 139, 74);
+            color: rgb(255, 255, 255);
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef6f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 90px; /* Added margin to prevent overlap with header */
+        }
+
+        header h1 {
+            text-align: center;
+            color: #2a9d8f;
+            margin-bottom: 20px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        section h2 {
+            color: #264653;
+            border-bottom: 2px solid #e9c46a;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        section p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #e76f51;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="aboutus.html">
+                    <img src="logo2.png" class="logo" alt="Airwise Logo">
+                </a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">MENU</button>
+            <div class="dropdown-content">
+                <a href="new.html">HOME</a>
+                <a href="aboutus.html">ABOUT US</a>
+                <a href="contactus.html">CONTACT US</a>
+                <a href="news.html">NEWS</a>
+                <a href="info.html">AQI INFO</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>About Airwise AQI</h1>
+
+        <section class="intro">
+            <h2>Welcome to Airwise AQI</h2>
+            <p>Your go-to source for accurate air quality information. Our mission is to provide real-time data on air quality and its impact on health.</p>
+        </section>
+
+        <section class="mission">
+            <h2>Our Mission</h2>
+            <p>At Airwise AQI, we are dedicated to helping you understand air quality and take proactive measures to protect your health. Our goal is to make air quality data accessible and actionable for everyone.</p>
+        </section>
+
+        <section class="team">
+            <h2>Meet the Team</h2>
+            <p>Our team consists of experts in environmental science, technology, and design, all working together to deliver the best air quality insights to you.</p>
+        </section>
+
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or feedback, feel free to reach out to us at <a href="mailto:airwiseaqi@gmail.com">airwiseaqi@gmail.com</a>.</p>
+        </section>
+    </div>
+
+
+    <script>
+
+                  // Dropdown functionality
+                  document.addEventListener('DOMContentLoaded', function () {
+            const dropdownBtn = document.querySelector('.dropbtn');
+            const dropdownContent = document.querySelector('.dropdown-content');
+
+            dropdownBtn.addEventListener('click', function () {
+                dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+            });
+
+            // Close the dropdown if clicked outside of it
+            window.addEventListener('click', function (event) {
+                if (!event.target.matches('.dropbtn')) {
+                    if (dropdownContent.style.display === 'block') {
+                        dropdownContent.style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

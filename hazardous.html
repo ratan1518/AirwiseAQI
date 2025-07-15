@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airwise AQI - Hazardous Air Quality</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff; /* Light sky-blue */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #007acc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            font-size: 18px;
+            color: #007acc;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-content {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .card-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .card-table th, .card-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .card-table th {
+            background-color: #f5faff;
+            color: #007acc;
+        }
+
+        .details-button {
+            display: inline-block;
+            background-color: #007acc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .details-button:hover {
+            background-color: #005f99;
+        }
+        .poor{
+            text-align: center;
+        }
+
+                        /* Back to Map Button */
+                        .back-to-map {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .back-to-map a {
+            text-decoration: none;
+        }
+
+        .back-to-map button {
+            background-color: hsl(173, 68%, 45%);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-to-map button:hover {
+            background-color: #21867a;
+        }
+    </style>
+</head>
+<body>
+    <div class="poor">
+    <h1>Airwise AQI - Hazardous Air Quality</h1>
+    <h2>Understanding Hazardous Air Quality</h2>
+</div>
+    <div class="container">
+        <!-- Card for Hazardous AQI Range -->
+        <div class="card">
+            <div class="card-header">What Does "Hazardous" Air Quality Mean?</div>
+            <div class="card-content">
+                <p>"Hazardous" air quality includes AQI ranges where air pollution poses a serious risk to health for everyone. This is the highest level of pollution:</p>
+                <table class="card-table">
+                    <tr>
+                        <th>AQI Range</th>
+                        <th>Category</th>
+                        <th>Health Impacts</th>
+                    </tr>
+                    <tr>
+                        <td>301+</td>
+                        <td>Hazardous</td>
+                        <td>Health warnings of emergency conditions. The entire population is more likely to be affected.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Card for Health Tips -->
+        <div class="card">
+            <div class="card-header">Health Tips for Hazardous Air Quality and Advice</div>
+            <div class="card-content">
+                <p>During hazardous air quality conditions, follow these crucial tips to safeguard your health:</p>
+                <ul>
+                    <li>Remain indoors at all times and avoid all outdoor activities.</li>
+                    <li>Use a high-quality air purifier with a HEPA filter.</li>
+                    <li>Close windows and doors to prevent outdoor air from entering your home.</li>
+                    <li>Keep hydrated and maintain good indoor air quality.</li>
+                </ul>
+                <p>Advice</p>
+                <ul>
+                    <li>Remain indoors at all times and avoid all outdoor activities. This is crucial to minimize exposure.</li>
+                    <li>Use high-quality air purifiers with HEPA filters to clean indoor air .</li>
+                    <li>Keep windows and doors closed to prevent outdoor air from entering.  </li>
+                    <li>Stay hydrated and consider consulting with a healthcare provider for personalized advice.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="card">
+            <div class="card-header">Learn More About AQI Ranges</div>
+            <div class="card-content">
+                <p>Explore our pages for other AQI ranges to understand their impacts and learn more about health recommendations.</p>
+                <a href="detailed-info.html" class="details-button">Back to Details</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-to-map">
+        <a href="new.html">
+            <button>Back to Map</button>
+        </a>
+    </div>
+
+</body>
+</html>

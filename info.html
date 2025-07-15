@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airwise AQI - AQI Calculation & Health Effects</title>
+    <style>
+        /* General Page Layout */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff; /* Light sky-blue */
+            margin: 0;
+            padding: 20px;
+            text-decoration: solid;
+        }
+
+        h1, h2 {
+            color: #007acc;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #2d3e50; /* Dark background for contrast */
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            width: 100%;
+            left: 0%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds subtle shadow */
+        }
+        
+        /* Logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            width: 100px;
+            height: auto;
+        }
+
+        .logo-container img.logo {
+            width: 100px; /* Adjust size as needed */
+            height: 40px;
+            margin-right: 100px;
+        }
+        
+        /* Navigation Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            right: 30px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: hwb(209 54% 4%);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            right: 0;
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font: bolder;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropbtn {
+            background-color: rgb(39, 139, 74);
+            color: rgb(255, 255, 255);
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Adjusting for Card Layout and Container */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas:
+                "aqi health safety"
+                ". learnmore .";
+            gap: 10px; /* Reduced gap between items */
+            padding-top: 100px; /* Space added to prevent overlapping with the header */
+        }
+
+        /* Card Design */
+        .card, .card1 {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px; /* Reduced padding for cards */
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover, .card1:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        .aqi-card {
+            grid-area: aqi;
+        }
+
+        .health-card {
+            grid-area: health;
+        }
+
+        .safety-card {
+            grid-area: safety;
+        }
+
+        .learnmore-card {
+            grid-area: learnmore;
+            justify-self: center;
+        }
+
+        /* Table Styling */
+        .card-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .card-table th, .card-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .card-table th {
+            background-color: #f5faff;
+            color: #007acc;
+        }
+
+        /* Button */
+        .details-button {
+            display: inline-block;
+            background-color: #007acc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .details-button:hover {
+            background-color: #005f99; /* Darker blue on hover */
+        }
+
+        /* Centered Information */
+        .info {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo-container">
+            <a href="info.html">
+                <img src="logo2.png" class="logo" alt="Airwise Logo">
+            </a>
+        </div>
+    </div>
+    
+    <div class="dropdown">
+        <button class="dropbtn">MENU</button>
+        <div class="dropdown-content">
+            <a href="new.html">HOME</a>
+            <a href="aboutus.html">ABOUT US</a>
+            <a href="contactus.html">CONTACT US</a>
+            <a href="news.html">NEWS</a>
+            <a href="info.html">AQI INFO</a>
+        </div> 
+    </div>
+</header>
+
+<div class="info">
+    <h1><br><br><b>Airwise AQI - Understanding Air Quality Index</b></h1>
+    <h2>How We Calculate AQI and Its Impact on Your Health</h2>
+</div>
+
+<b><div class="container">
+    <!-- AQI Calculation Card -->
+    <div class="card aqi-card">
+        <div class="card-header"><b>Step-by-Step AQI Calculation</b></div>
+        <div class="card-content">
+            <p>We calculate AQI based on the concentration of key pollutants. Here's how it works:</p>
+            <table class="card-table">
+                <tr>
+                    <th>Pollutant</th>
+                    <th>Concentration (µg/m³)</th>
+                    <th>AQI Value</th>
+                </tr>
+                <tr>
+                    <td>PM2.5</td>
+                    <td>22 µg/m³</td>
+                    <td>37</td>
+                </tr>
+                <tr>
+                    <td>PM10</td>
+                    <td>63 µg/m³</td>
+                    <td>63</td>
+                </tr>
+                <tr>
+                    <td>SO2</td>
+                    <td>3 µg/m³</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>CO</td>
+                    <td>257 µg/m³</td>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <td>Ozone</td>
+                    <td>6 µg/m³</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>NO2</td>
+                    <td>8 µg/m³</td>
+                    <td>10</td>
+                </tr>
+            </table>
+            <p>The final AQI is based on the highest sub-index, which is 63 for PM10.</p>
+        </div>
+    </div>
+
+    <!-- Health Effects Card -->
+    <div class="card health-card">
+        <div class="card-header">Health Effects of Pollutants</div>
+        <div class="card-content">
+            <p>Each pollutant has unique health risks at certain concentrations:</p>
+            <table class="card-table">
+                <tr>
+                    <th>Pollutant</th>
+                    <th>Effect on Health</th>
+                </tr>
+                <tr>
+                    <td>PM2.5</td>
+                    <td>Can penetrate the lungs and cause respiratory diseases.</td>
+                </tr>
+                <tr>
+                    <td>PM10</td>
+                    <td>Can cause eye, nose, and throat irritation; worsen asthma.</td>
+                </tr>
+                <tr>
+                    <td>SO2</td>
+                    <td>Short-term exposure can cause throat irritation and coughing.</td>
+                </tr>
+                <tr>
+                    <td>CO</td>
+                    <td>High levels can impair oxygen delivery to organs, causing headaches, dizziness, and even death.</td>
+                </tr>
+                <tr>
+                    <td>Ozone</td>
+                    <td>Can cause chest pain, throat irritation, and worsen bronchitis or asthma.</td>
+                </tr>
+                <tr>
+                    <td>NO2</td>
+                    <td>Can irritate airways in the human respiratory system and cause breathing problems.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Safety Limits Card -->
+    <div class="card safety-card">
+        <div class="card-header">Safety Limits</div>
+        <div class="card-content">
+            <p>Understanding safe levels of pollutants:</p>
+            <table class="card-table">
+                <tr>
+                    <th>Pollutant</th>
+                    <th>Safe Level (µg/m³)</th>
+                </tr>
+                <tr>
+                    <td>PM2.5</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>PM10</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>SO2</td>
+                    <td>75</td>
+                </tr>
+                <tr>
+                    <td>CO</td>
+                    <td>1000</td>
+                </tr>
+                <tr>
+                    <td>Ozone</td>
+                    <td>180</td>
+                </tr>
+                <tr>
+                    <td>NO2</td>
+                    <td>40</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Learn More Card -->
+    <div class="card learnmore-card">
+        <div class="card-header">Learn More</div>
+        <div class="card-content">
+            <p>For detailed insights and real-time data, visit our website:</p>
+            <a href="new.html" class="details-button">Get back to Map</a>
+        </div>
+    </div>
+</div>
+</b>
+<script>
+
+    // Dropdown functionality
+    document.addEventListener('DOMContentLoaded', function () {
+const dropdownBtn = document.querySelector('.dropbtn');
+const dropdownContent = document.querySelector('.dropdown-content');
+
+dropdownBtn.addEventListener('click', function () {
+  dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+});
+
+// Close the dropdown if clicked outside of it
+window.addEventListener('click', function (event) {
+  if (!event.target.matches('.dropbtn')) {
+      if (dropdownContent.style.display === 'block') {
+          dropdownContent.style.display = 'none';
+      }
+  }
+});
+});
+</script>
+
+</body>
+</html>

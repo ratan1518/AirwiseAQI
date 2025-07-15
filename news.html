@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Latest News</title>
+  <link rel="stylesheet" href="news.css">
+</head>
+
+<style>
+  header {
+   background-color: #2d3e50; /* Dark background for contrast */
+   height: 70px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 20px;
+   position: fixed;
+   width: 100%;
+   top: 0;
+   z-index: 1000;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds subtle shadow */
+}
+
+/* Logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: auto;
+}
+
+.logo-container img.logo {
+  width: 100px; /* Adjust size as needed */
+  height:40px;
+  margin-right: 100px;
+}
+
+.dropdown {
+            position: relative;
+            display: inline-block;
+            right: 30px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: hwb(209 54% 4%);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            right: 0;
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font: bolder;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropbtn {
+            background-color: rgb(39, 139, 74);
+            color: rgb(255, 255, 255);
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+
+</style>
+
+<header>
+<div class="header-container">
+<div class="logo-container">
+ <a href="news.html">
+     <img src="logo2.png" class="logo" alt="Airwise Logo">
+ </a>
+
+</div>
+</div>
+
+<div class="dropdown">
+<button class="dropbtn">MENU</button>
+<div class="dropdown-content">
+<a href="new.html">HOME</a>
+<a href="aboutus.html">ABOUT US</a>
+<a href="contactus.html">CONTACT US</a>
+<a href="news.html">NEWS</a>
+<a href="info.html">AQI INFO</a>
+</div>
+</div>
+</header>
+
+
+
+<style>
+    body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+background-color: #eef6f9;
+color: #333;
+}
+
+.container {
+max-width: 800px;
+margin: 20px auto;
+padding: 20px;
+background-color: #ffffff;
+border-radius: 15px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+text-align: center;
+color: #2a9d8f;
+margin-bottom: 20px;
+}
+
+section {
+margin-bottom: 30px;
+}
+
+section h2 {
+color: #264653;
+border-bottom: 2px solid #e9c46a;
+padding-bottom: 10px;
+margin-bottom: 15px;
+}
+
+section p {
+font-size: 1.1em;
+line-height: 1.6;
+}
+
+a {
+color: #e76f51;
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: underline;
+}
+</style>
+</head>
+
+    
+      <script>
+        const dropdownButton = document.querySelector('.navbar-dropdown-btn');
+        const dropdownContent = document.querySelector('.navbar-dropdown-content');
+    
+        dropdownButton.addEventListener('click', () => {
+          dropdownContent.classList.toggle('show');
+        });
+      </script>
+<body>
+  <section id="news">
+    <h2><br>LATEST NEWS </h2> 
+       <div class="card-container">
+          <div class="card">
+            <h3>Headline 1</h3>
+            <b>Delhi government sets up 24x7 'Green War Room' to tackle winter pollution</b>
+            <br><br><br>
+                    <a href="https://economictimes.indiatimes.com/news/india/delhi-government-sets-up-24x7-green-war-room-to-tackle-winter-pollution/articleshow/113812766.cms" target="_blank">Read more</a>
+                    
+            <h3><b>Synopsis</b></h3>
+            <p><b>The Delhi government has launched a 24x7 'Green War Room' to implement its 21-point winter action plan to combat pollution. Managed by eight environmental experts, the war room will analyze drone mapping, satellite data on stubble burning, and AQI data. Residents are encouraged to report pollution incidents via the Green Delhi App.</b></p>
+          </div>
+          <div class="card">
+            <h3>Headline 2</h3>
+            <b>Delhi, Kolkata, and other cities record 'Moderate' pollution; Pune and Hyderabad show cleaner air</b>
+           <br><br></b> <a href="https://indianexpress.com/article/india/air-quality-index-india-imd-delhi-mumbai-hyderabad-9601055/#:~:text=While%20northern%20cities%20like%20Delhi,are%20seeing%20significantly%20cleaner%20air." target="_blank">Read more</a>
+            <b><h3>Synopsis</h3></b>
+            <p><b>AQI reports reveal regional disparities in India's air quality. Northern cities like Delhi and Kolkata have "moderate" AQI levels, posing risks for sensitive individuals, while Pune and Bengaluru enjoy "satisfactory" air. Mumbai’s AQI is 86, affected by dust and smog, with possible rain in some areas to improve conditions.
+
+            </b></p>
+          </div>
+          <div class="card">
+            <h3>Headline 3</h3>
+            <b>As winter comes closer, North India braces for deteriorating air quality and farm fires</b>
+          <br><br>  <a href="https://economictimes.indiatimes.com/news/india/vehicles-road-dust-industries-main-delhi-ncr-polluters-study/articleshow/113827451.cms?from=mdr" target="_blank">Read more</a>
+          <b><h3>Synopsis</h3></b>
+          <p><b>
+            With winter approaching, north India is preparing to tackle rising farm fires and deteriorating air quality. Key stakeholders are evaluating readiness, while the Supreme Court demands accountability for stubble burning. Delhi seeks central assistance, and Haryana announces a winter action plan. Effective measures are crucial to avoid another breathless winter.</b></p>
+          </div>
+          <div class="card">
+            <h3>Headline 4</h3>
+            <b>Vehicles, road dust & industries main Delhi-NCR polluters: Study </b>
+            <br><br><br><a href="https://economictimes.indiatimes.com/news/india/air-in-your-car-cabin-could-lead-to-cancer-neurological-and-reproductive-issues-heres-what-study-says/articleshow/113388079.cms" target="_blank">Read more</a>
+            <b><h3>Synopsis</h3></b>
+            <p><b>The Commission for Air Quality Monitoring is reviewing an IIT Kanpur-TERI report. It identifies road dust and traffic as the main pollution sources in Delhi. Industrial pollution dominates in the NCR. Corrective actions have been initiated, making coal-based plant emissions drop. The vehicle population in Delhi has significantly increased, affecting air quality.
+</b></p>
+          </div>
+          <div class="card">
+            <h3>Headline 5</h3>
+            <b>As monsoon tapers, AQI levels in the city begin to rise
+            </b><br><br><br>
+            <a href="https://www.hindustantimes.com/cities/mumbai-news/as-monsoon-tapers-aqi-levels-in-the-city-begin-to-rise-101727896695491.html#:~:text=Colaba%20has%20reported%20the%20highest,city%20have%20started%20spiking%20again." target="_blank">Read more</a>
+            <b><h3>Synopsis</h3></b>
+            <p><b>  
+                In the past 24 hours, the entire city of Mumbai has seen more than 50% increase in the PM2.5 levels as compared to the prior week. Colaba has reported the highest increase in PM2.5 at 81%,” said Ronak Sutaria, founder and CEO of Mumbai-based climate tech startup Respirer Living Sciences.
+            </b></p>
+          </div>
+     
+      
+    </div>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+  
+  #news {
+    margin-top: 20px;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    color: #000000;
+    text-align: center;
+  }
+  
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .card {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: auto;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card h3 {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+  
+  .card p {
+    margin-top: 5px;
+    color: #666666;
+  }
+  
+  .card a {
+    display: block;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .card a:hover {
+    background-color: #0056b2;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .card-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  body {
+    background-image: url("newsimg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .summary {
+    display: none;
+  }
+  
+  .show-summary:hover + .summary {
+    display: block;
+  }
+  
+</style>
+
+<script>
+
+  // Dropdown functionality
+  document.addEventListener('DOMContentLoaded', function () {
+const dropdownBtn = document.querySelector('.dropbtn');
+const dropdownContent = document.querySelector('.dropdown-content');
+
+dropdownBtn.addEventListener('click', function () {
+dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+});
+
+// Close the dropdown if clicked outside of it
+window.addEventListener('click', function (event) {
+if (!event.target.matches('.dropbtn')) {
+    if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+    }
+}
+});
+});
+</script>
+</body>
+</html>

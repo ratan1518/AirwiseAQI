@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Air Quality Information</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .search-container {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 300px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .content {
+            position: relative;
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .location-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        .aqi-info {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        /* Styling for AQI background based on value */
+        .aqi-value {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .good { background-color: #008000; }
+        .moderate { background-color: #fafa00; color: #000000; }
+        .unhealthy-sensitive { background-color: #ffa500; }
+        .unhealthy { background-color: #ff0000; }
+        .very-unhealthy { background-color: #800080; }
+        .hazardous { background-color: #800000; }
+
+        .aqi-category {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-left: 10px;
+            color: #000000;
+        }
+
+        .pollutant-info {
+            margin: 20px 0;
+            font-size: 1.1rem;
+            color: #000000;
+            font-weight: normal;
+        }
+
+        .pollutant-info ul {
+            list-style-type: none;
+        }
+
+        .pollutant-info li {
+            margin: 5px 0;
+            font-size: 1.1rem;
+        }
+
+        /* Back to Map Button */
+        .back-to-map {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .back-to-map a {
+            text-decoration: none;
+        }
+
+        .back-to-map button {
+            background-color: hsl(173, 68%, 45%);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-to-map button:hover {
+            background-color: #21867a;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120vh;
+            background-image: url(indiaback.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120vh;
+            background-color: rgba(255, 255, 255, 0.589);
+            z-index: 0.7;
+        }
+
+        .header1 {
+            margin-top: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Position image in the top-right corner of the "Air Quality in City" box */
+        .air-quality-image {
+            position: absolute;
+            top: 55px;
+            right: 10px;
+            width: 100px; /* Change the width */
+            height: auto;  /* Maintain the aspect ratio */
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        /* More Details Button */
+        .more-details {
+            margin: 20px 0;
+        }
+
+        .more-details button {
+            background-color: #007BFF; /* Match the header background */
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .more-details button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+        .more-details button{
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        /* Health Impact Card */
+        .health-impact-card {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 20px; /* Space between sections */
+        }
+
+        .health-img-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .health-img-text img {
+            margin-right: 10px;
+        }
+
+        .health-img-text div {
+            text-align: left; /* Align text to the left */
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <img src="air-quality-image.jpg" alt="city image" class="background">
+    <div class="header1">
+        <header>
+            <h1>Detailed Air Quality Info</h1> 
+        </header>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="city-input" placeholder="Enter city name">
+        <button id="search-btn">Search</button>
+    </div>
+
+    <div class="content">
+        <h2 class="location-title" id="location-title">Enter a city to get air quality data</h2>
+        <div class="aqi-info">
+            <p id="aqi">AQI: <span class="aqi-value" id="aqi-value">--</span><span class="aqi-category" id="aqi-category"></span></p>
+            <p id="pm25">PM<span style="font-size: 0.75em;">2.5</span>: <strong>--</strong></p>
+            <p id="pm10">PM<span style="font-size: 0.75em;">10</span>: <strong>--</strong></p>
+        </div>
+
+        <!-- Air quality image (initially hidden) -->
+        <img id="air-quality-image" class="air-quality-image" src="" alt="" style="display: none;">
+
+        <div class="pollutant-info">
+            <h3>Pollutant Details:</h3>
+            <ul id="pollutants-list">
+                <li id="co">CO: -- µg/m³</li>
+                <li id="no2">NO<span style="font-size: 0.75em;">2</span>: -- µg/m³</li>
+                <li id="so2">SO<span style="font-size: 0.75em;">2</span>: -- µg/m³</li>
+                <li id="o3">O<span style="font-size: 0.75em;">3</span>: -- µg/m³</li>
+            </ul>
+        </div>
+
+        <!-- More Details Button inside the content -->
+        <div class="more-details">
+            <button id="more-details-btn">Understand this <br> Air Quality Better</button>
+
+        </div>
+    </div>
+
+    <!-- Health impacts card -->
+    <div class="health-impact-card" id="health-impact-card" style="display: none;">
+        <h2>Precautions to be Taken</h2>
+        <div id="health-precautions"></div>
+    </div>
+
+    <div class="back-to-map">
+        <a href="new.html">
+            <button>Back to Map</button>
+        </a>
+    </div>
+
+    <script>
+        const waqiApiKey = 'd8a56e5af8e1002cfc8a1b8704f5af9e66e51492'; // Your WAQI API token here
+        const geoApiKey = 'b44894040ab743c49d88b931f9b54db6'; // Replace with your OpenCage API key
+        let currentAQICategory = ''; // Variable to store current AQI category
+
+        async function fetchCoordinates(city) {
+            const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(city)}&key=${geoApiKey}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                if (data.results && data.results.length > 0) {
+                    const { lat, lng } = data.results[0].geometry;
+                    return { lat, lng };
+                }
+                throw new Error('No results found for this location.');
+            } catch (error) {
+                console.error(error);
+                alert('Error fetching coordinates.');
+                return null;
+            }
+        }
+
+        async function fetchAirQuality(lat, lng) {
+    const url = `https://api.waqi.info/feed/geo:${lat};${lng}/?token=${waqiApiKey}`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data); // Debugging: Check if the response data is correct
+        if (data.status === 'ok') {
+            return data.data;
+        }
+        throw new Error('Error fetching air quality data.');
+    } catch (error) {
+        console.error(error);
+        alert('Error fetching air quality data.');
+        return null;
+    }
+}
+
+
+function updateUI(data) {
+    if (!data || !data.city || !data.iaqi) {
+        console.error('Incomplete data received', data); // Debugging: Check for incomplete data
+        return;
+    }
+
+    document.getElementById('location-title').textContent = data.city.name || 'Unknown Location';
+    document.getElementById('aqi-value').textContent = data.aqi || '--';
+    document.getElementById('pm25').querySelector('strong').textContent = data.iaqi.pm25 ? data.iaqi.pm25.v : '--';
+    document.getElementById('pm10').querySelector('strong').textContent = data.iaqi.pm10 ? data.iaqi.pm10.v : '--';
+    document.getElementById('co').textContent = `CO: ${data.iaqi.co ? data.iaqi.co.v : '--'} µg/m³`;
+    document.getElementById('no2').textContent = `NO₂: ${data.iaqi.no2 ? data.iaqi.no2.v : '--'} µg/m³`;
+    document.getElementById('so2').textContent = `SO₂: ${data.iaqi.so2 ? data.iaqi.so2.v : '--'} µg/m³`;
+    document.getElementById('o3').textContent = `O₃: ${data.iaqi.o3 ? data.iaqi.o3.v : '--'} µg/m³`;
+
+    const aqiValue = data.aqi || 0;  // Ensure AQI value has a fallback
+    let aqiCategory = '';
+    let aqiClass = '';
+
+            if (aqiValue <= 50) {
+                aqiCategory = 'Good';
+                aqiClass = 'good';
+            } else if (aqiValue <= 100) {
+                aqiCategory = 'Moderate';
+                aqiClass = 'moderate';
+            } else if (aqiValue <= 150) {
+                aqiCategory = 'Poor';
+                aqiClass = 'unhealthy-sensitive';
+            } else if (aqiValue <= 200) {
+                aqiCategory = 'Unhealthy';
+                aqiClass = 'unhealthy';
+            } else if (aqiValue <= 300) {
+                aqiCategory = 'Very Unhealthy';
+                aqiClass = 'very-unhealthy';
+            } else {
+                aqiCategory = 'Hazardous';
+                aqiClass = 'hazardous';
+            }
+
+            document.getElementById('aqi-category').textContent = aqiCategory;
+            document.getElementById('aqi-value').className = 'aqi-value ' + aqiClass;
+
+            // Store the current AQI category for the More Details button
+            currentAQICategory = aqiCategory;
+
+            // Show the air quality image based on the category
+            const imageMap = {
+                'Good': 'good-face.jpg',
+                'Moderate': 'moderate-face.jpg',
+                'Poor': 'poor-face.png',
+                'Unhealthy': 'unhealthy-face.jpg',
+                'Very Unhealthy': 'veryunhealthy-face.jpg',
+                'Hazardous': 'hazardous-face.jpg'
+            };
+            const imageUrl = imageMap[aqiCategory] || '';
+            const airQualityImage = document.getElementById('air-quality-image');
+            airQualityImage.src = imageUrl;
+            airQualityImage.style.display = imageUrl ? 'block' : 'none';
+
+            // Set image size specifically for 'Hazardous'
+                if (aqiClass === 'hazardous') {
+               airQualityImage.style.width = '160px'; // Increase width for Hazardous category
+              } else {
+               airQualityImage.style.width = '100px'; // Default width for other categories
+             }
+
+
+            // Update health impact card based on AQI category
+            updateHealthImpactCard(aqiCategory);
+        }
+
+        function updateHealthImpactCard(aqiCategory) {
+            const healthPrecautions = document.getElementById('health-precautions');
+            healthPrecautions.innerHTML = ''; // Clear previous content
+
+            const precautionsMap = {
+                'Good': [
+                    { img: 'https://www.aqi.in/assets/images/wear-mask-icon-cross.png', text: 'Wear Mask', desc: 'Not Required' },
+                    { img: 'https://www.aqi.in/assets/images/Stay-Indoors-icon-cross.png', text: 'Stay Indoors', desc: 'Not Required' },
+                    { img: 'https://www.aqi.in/assets/images/Shut-Openings-icon.png', text: 'Windows', desc: 'Keep Open' },
+                    { img: 'https://www.aqi.in/assets/images/Use-a-purifier-icon-cross.png', text: 'Use Purifier', desc: 'Not Required' },
+                    { img: 'https://www.aqi.in/assets/images/family-icon.png', text: 'Family', desc: 'Allow Outdoor' }
+                ]       ,
+                'Moderate': [
+                    { img: 'https://www.aqi.in/assets/images/wear-mask-icon-cross.png', text: 'Wear Mask', desc: 'Not Required' },
+                    { img: 'https://www.aqi.in/assets/images/Stay-Indoors-icon-cross.png', text: 'Stay Indoors', desc: 'Not Required' },
+                    { img: 'https://www.aqi.in/assets/images/Shut-Openings-icon.png', text: 'Windows', desc: 'Keep Open' },
+                    { img: 'https://www.aqi.in/assets/images/Use-a-purifier-icon.png', text: 'Use Purifier', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/family-icon.png', text: 'Family', desc: 'Limit Outdoor' }
+                ],
+                'Poor': [
+                    { img: 'https://www.aqi.in/assets/images/wear-mask-icon.png', text: 'Wear Mask', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/Stay-Indoors-icon.png', text: 'Stay Indoors', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/Shut-Openings-icon-cross.png', text: 'Windows', desc: 'Keep Closed' },
+                    { img: 'https://www.aqi.in/assets/images/Use-a-purifier-icon.png', text: 'Use Purifier', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/family-icon-cross.png', text: 'Family', desc: 'Avoid Outdoor' }
+                ],
+                'Unhealthy': [
+                    { img: 'https://www.aqi.in/assets/images/wear-mask-icon.png', text: 'Wear Mask', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/Stay-Indoors-icon.png', text: 'Stay Indoors', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/Shut-Openings-icon-cross.png', text: 'Windows', desc: 'Keep Closed' },
+                    { img: 'https://www.aqi.in/assets/images/Use-a-purifier-icon.png', text: 'Use Purifier', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/family-icon-cross.png', text: 'Family', desc: 'Avoid Outdoor' }
+                ],
+                'Very Unhealthy': [
+                    { img: 'https://www.aqi.in/assets/images/wear-mask-icon.png', text: 'Wear Mask', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/Stay-Indoors-icon.png', text: 'Stay Indoors', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/Shut-Openings-icon-cross.png', text: 'Windows', desc: 'Keep Closed' },
+                    { img: 'https://www.aqi.in/assets/images/Use-a-purifier-icon.png', text: 'Use Purifier', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/family-icon-cross.png', text: 'Family', desc: 'Avoid Outdoor' }
+                ],
+                'Hazardous': [
+                    { img: 'https://www.aqi.in/assets/images/wear-mask-icon.png', text: 'Wear Mask', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/Stay-Indoors-icon.png', text: 'Stay Indoors', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/Shut-Openings-icon-cross.png', text: 'Windows', desc: 'Keep Closed' },
+                    { img: 'https://www.aqi.in/assets/images/Use-a-purifier-icon.png', text: 'Use Purifier', desc: 'Required' },
+                    { img: 'https://www.aqi.in/assets/images/family-icon-cross.png', text: 'Family', desc: 'Avoid Outdoor' }
+                ]
+            };
+
+            const precautions = precautionsMap[aqiCategory] || [];
+            precautions.forEach(precaution => {
+                const div = document.createElement('div');
+                div.className = 'health-img-text';
+                div.innerHTML = `<img src="${precaution.img}" alt="${precaution.text}" width="40" height="40"><div><p>${precaution.text}</p><p>${precaution.desc}</p></div>`;
+                healthPrecautions.appendChild(div);
+            });
+
+            // Show the health impact card
+            document.getElementById('health-impact-card').style.display = 'block';
+        }
+
+        document.getElementById('search-btn').addEventListener('click', async () => {
+    const city = document.getElementById('city-input').value.trim();
+    if (!city) {
+        alert('Please enter a city name.');
+        return;
+    }
+
+    const coordinates = await fetchCoordinates(city);
+    if (coordinates) {
+        const airQualityData = await fetchAirQuality(coordinates.lat, coordinates.lng);
+        if (airQualityData) {
+            updateUI(airQualityData);  // Only update UI if data is fetched successfully
+        } else {
+            alert('Unable to fetch air quality data.');
+        }
+    } else {
+        alert('Unable to fetch coordinates for the city.');
+    }
+});
+
+
+        document.getElementById('more-details-btn').addEventListener('click', () => {
+            // Open a new HTML page based on the AQI category
+            //let detailPage = 'details.html'; // Default page
+            switch (currentAQICategory) {
+                case 'Good':
+                    detailPage = 'good.html';
+                    break;
+                case 'Moderate':
+                    detailPage = 'moderate.html';
+                    break;
+                case 'Poor':
+                    detailPage = 'poor.html';
+                    break;
+                case 'Unhealthy':
+                    detailPage = 'unhealthy.html';
+                    break;
+                case 'Very Unhealthy':
+                    detailPage = 'veryunhealthy.html';
+                    break;
+                case 'Hazardous':
+                    detailPage = 'hazardous.html';
+                    break;    
+
+                default:
+                    alert('Enter city name the first.');
+            }
+            window.location.href = detailPage;
+        });
+    </script>
+</body>
+</html>
